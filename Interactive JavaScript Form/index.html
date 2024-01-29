@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sum Calculator</title>
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sum Calculator</h2>
+    <!-- Taking simple input for 2 numbers -->
+    <form id="sumForm">
+      <label for="num1">Enter First Number:</label>
+      <input type="text" id="num1" name="num1" required><br>
+      <label for="num2">Enter Second Number:</label>
+      <input type="text" id="num2" name="num2" required><br>
+      <!-- initialising function by using onclick  -->
+      <button type="button" onclick="calculateSum()">Calculate Sum</button>
+    </form>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateSum() {
+      var num1 = document.getElementById('num1').value.trim();
+      var num2 = document.getElementById('num2').value.trim();
+
+      // if inputs are not numeric then do not proceed
+      if (!isValidNumber(num1) || !isValidNumber(num2)) {
+        alert('Please enter valid numeric values for both numbers.');
+        return;
+      }
+
+      var sum = parseFloat(num1) + parseFloat(num2);
+      document.getElementById('result').innerHTML = 'Sum: ' + sum;
+    }
+    //Basic verifications of input 
+    function isValidNumber(value) {
+      return !isNaN(value) && isFinite(value);
+    }
+  </script>
+</body>
+</html>
